@@ -50,9 +50,9 @@ For standalone usage you can override deployments.yaml configuration with volume
 
 ## Setup Development Environment
 
-- Clone this repo: `git clone git@github.com:SindriaInc/deploy-immutables.git`
-- Move into it: `cd deploy-immutables`
-- Build local image: `bash build.sh sindriainc/deploy-immutables local`
+- Clone this repo: `git clone git@github.com:SindriaInc/cm-lightsail-instance-public-ports.git`
+- Move into it: `cd cm-lightsail-instance-public-ports`
+- Build local image: `bash build.sh sindriainc/cm-lightsail-instance-public-ports local`
 - Setup env: `cp .env.local .env`
 - Setup docker compose: `cp docker-compose.local.yml docker-compose.yml`
 - Start environment: `docker-compose up -d`
