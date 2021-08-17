@@ -7,8 +7,8 @@ ARG HOST_USER_UID
 ARG TIMEZONE
 
 LABEL \
-	name="deploy-immutables" \
-	image="sindriainc/deploy-immutables" \
+	name="cm-lightsail-instance-public-ports" \
+	image="sindriainc/cm-lightsail-instance-public-ports" \
 	tag="${TAG_VERSION}" \
 	vendor="sindria"
 
