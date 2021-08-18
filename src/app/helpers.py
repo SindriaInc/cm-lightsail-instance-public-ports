@@ -34,3 +34,7 @@ def save(file, data):
       print(e)
       sys.exit(1)
   return True
+
+# Generate cidrs for rule create - return string
+def process_cidrs():
+    pass
