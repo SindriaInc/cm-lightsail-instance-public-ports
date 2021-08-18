@@ -3,7 +3,7 @@ import yaml
 import datetime
 
 # Global app config
-APP_CONFIG = '/var/www/app/config/deployments.yaml'
+APP_CONFIG = '/var/www/app/config/security.yaml'
 
 # Get app config
 def app():
