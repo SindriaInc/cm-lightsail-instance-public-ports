@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import subprocess
 import os
 
 import helpers
@@ -18,35 +17,15 @@ if (PYCHARM_PYDEVD_ENABLED):
     pydevd_pycharm.settrace(PYCHARM_PYDEVD_HOST, port=PYCHARM_PYDEVD_PORT, stdoutToServer=True, stderrToServer=True)
 
 
-# Check if entry rule already exists - return boolean
-def check_entry_rule(entry, port):
-    if (entry['fromPort'] == port):
-        return True
-    return False
-
-
-def process_rules(rules, current_rules):
-
+def process_rules(name, rules):
     print("X")
-    #print(current_rules)
-
     for rule in rules:
-        #print(rule)
-
-        i = 0
-
-        for k,entry in current_rules.items():
-            #print(entry[i])
-            if (check_entry_rule(entry[i], rule['port_info']['fromPort'])):
-                print("test")
-                #delete_rule()
-
-            i =+1
-
+        if (service.find_rule(name, rule)):
+            service.delete_rule(name, rule)
 
 
 def process_instance(instance):
-    subprocess.call(['aws', 'lightsail', 'open-instance-public-ports', '--instance-name', instance['name'], '--port-info', instance['rule']])
+    pass
 
 
 # Main
@@ -55,15 +34,8 @@ def main():
 
     # Process lightsail instances
     for k,instance in data['lightsail'].items():
-        current_rules = service.get_rules(instance['name'])
-        process_rules(instance['rules'], current_rules)
+        process_rules(instance['name'], instance['rules'])
 
-
-
-        #print(current_rules)
-
-        #print("test")
-        #process_instance(instance)
 
 # Execute
 if __name__ == '__main__':
