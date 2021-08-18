@@ -27,7 +27,15 @@ def delete_rule(name, rule):
 # Find specific rule by port - return boolean
 def find_rule(name, rule):
     current_rules = get_rules(name)
+    i = 0
     for k, entry in current_rules.items():
-        if (entry['port_info']['fromPort'] == rule['fromPort']):
+
+        #print(entry[i])
+        #print(rule)
+
+        if (entry[i]['fromPort'] == rule['port_info']['fromPort']):
             return True
+
+        i=+1
+
     return False

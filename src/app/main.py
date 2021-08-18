@@ -21,11 +21,13 @@ def process_rules(name, rules):
     print("X")
     for rule in rules:
         if (service.find_rule(name, rule)):
-            service.delete_rule(name, rule)
+            #service.delete_rule(name, rule)
+            #service.create_rule(name, rule)
+            print("found, deleting...")
 
+        print("not found, skipping...")
+        # service.create_rule(name, rule)
 
-def process_instance(instance):
-    pass
 
 
 # Main
