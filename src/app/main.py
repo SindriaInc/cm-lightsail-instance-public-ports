@@ -16,12 +16,10 @@ if (PYCHARM_PYDEVD_ENABLED):
     import pydevd_pycharm
     pydevd_pycharm.settrace(PYCHARM_PYDEVD_HOST, port=PYCHARM_PYDEVD_PORT, stdoutToServer=True, stderrToServer=True)
 
-
+# Core rules processing
 def process_rules(name, rules):
-    print("X")
 
     current_rules = service.get_rules(name)
-
     i = 0
 
     for rule in rules:
