@@ -30,40 +30,17 @@ def process_rules(name, rules):
 
         for entry in current_rules['portStates']:
 
-            print("check:")
-            print(rule)
-            print("\n")
-
-            print("with")
-            print(entry)
-
-            print("\n")
-            print(j)
-            print("\n")
-
             if (rule['port_info']['fromPort'] == entry['fromPort']):
 
                 print("found, deleting...")
                 service.delete_rule(name, rule)
                 service.create_rule(name, rule)
-                print("\n")
             else:
-                print("\n")
                 print("not found, skipping...")
-                print("\n")
 
             j += 1
 
-
-
-        print("\n")
-        print("External count is: " + str(i))
-        print("\n")
-
-        print("####################################################################################################")
-
         i += 1
-
         service.create_rule(name, rule)
 
 
