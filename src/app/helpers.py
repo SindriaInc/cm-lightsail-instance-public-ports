@@ -37,7 +37,4 @@ def save(file, data):
 
 # Generate cidrs for rule create - return string
 def build_cidrs(cidrs):
-
-    # TODO: implement build cidrs
-
-    print(cidrs)
+    return ','.join(cidrs)

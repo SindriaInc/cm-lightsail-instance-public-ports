@@ -16,9 +16,7 @@ def create_rule(name, rule):
 
 # Create a rule with restricted cidrs - return void
 def create_rule_with_cidrs(name, rule):
-    cidrs = helpers.build_cidrs(rule['port_info']['cidrs'])
-    sys.exit(0)
-    #cidrs = "23.65.80.239/32,3.63.182.178/32"
+    cidrs = str(helpers.build_cidrs(rule['port_info']['cidrs']))
     subprocess.call(['aws', 'lightsail', 'open-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+str(rule['port_info']['fromPort'])+',protocol='+str(rule['port_info']['protocol'])+',toPort='+str(rule['port_info']['toPort'])+',cidrs='+cidrs+''])
 
 # Delete existing rule - return void
