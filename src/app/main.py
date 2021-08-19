@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import sys
 
 import helpers
 import service
@@ -45,18 +44,13 @@ def process_rules(name, rules):
             if (rule['port_info']['fromPort'] == entry['fromPort']):
 
                 print("found, deleting...")
-                # service.delete_rule(name, rule)
-                # service.create_rule(name, rule)
+                service.delete_rule(name, rule)
+                service.create_rule(name, rule)
                 print("\n")
             else:
                 print("\n")
                 print("not found, skipping...")
-                #print(rule)
                 print("\n")
-
-                # service.create_rule(name, rule)
-
-
 
             j += 1
 
@@ -70,6 +64,8 @@ def process_rules(name, rules):
 
         i += 1
 
+        service.create_rule(name, rule)
+
 
 
 
@@ -81,7 +77,6 @@ def main():
     # Process lightsail instances
     for k,instance in data['lightsail'].items():
         process_rules(instance['name'], instance['rules'])
-        #sys.exit(0)
 
 
 # Execute
