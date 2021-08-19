@@ -37,5 +37,4 @@ def find_rule(name, rule):
             return True
 
         i=+1
-
-    return False
+        continue
