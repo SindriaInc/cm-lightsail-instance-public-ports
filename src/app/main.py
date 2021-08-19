@@ -42,7 +42,7 @@ def process_rules(name, rules):
             print(j)
             print("\n")
 
-            if (entry['fromPort'] == rule['port_info']['fromPort']):
+            if (rule['port_info']['fromPort'] == entry['fromPort']):
 
                 print("found, deleting...")
                 # service.delete_rule(name, rule)
