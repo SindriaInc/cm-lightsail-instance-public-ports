@@ -52,9 +52,6 @@ def process_rules(name, rules):
             service.create_rule(name, rule)
 
 
-
-
-
 # Main
 def main():
     data = helpers.app()

@@ -12,40 +12,34 @@ NOW=$(date "+%Y-%m-%d_%H-%M-%S")
 
 if [ "${IAC_MODE}" == "standalone" ]; then
 
-  # Validation immutable name
-  if [ "${IMMUTABLE_NAME}" == "" ]; then
-      echo -e "${YELLOW}IMMUTABLE_NAME env must be provided${NC}"
+  # Validation lightsail name
+  if [ "${LIGHTSAIL_NAME}" == "" ]; then
+      echo -e "${YELLOW}LIGHTSAIL_NAME env must be provided${NC}"
       exit 1
   fi
 
-  # Validation immutable refer
-  if [ "${IMMUTABLE_REFER}" == "" ]; then
-      echo -e "${YELLOW}IMMUTABLE_REFER env must be provided${NC}"
+  # Validation lightsail port
+  if [ "${LIGHTSAIL_PORT}" == "" ]; then
+      echo -e "${YELLOW}LIGHTSAIL_PORT env must be provided${NC}"
       exit 1
   fi
 
-  # Validation immutable type
-  if [ "${IMMUTABLE_TYPE}" == "" ]; then
-    IMMUTABLE_TYPE="lightsail"
+  # Validation lightsail protocol
+  if [ "${LIGHTSAIL_PROTOCOL}" == "" ]; then
+    LIGHTSAIL_PROTOCOL="TCP"
   fi
 
-  # Validation immutable bundle
-  if [ "${IMMUTABLE_BUNDLE}" == "" ]; then
-    IMMUTABLE_BUNDLE="micro_2_0"
-  fi
-
-  # Validation immutable zone
-  if [ "${IMMUTABLE_ZONE}" == "" ]; then
-    IMMUTABLE_ZONE="eu-central-1a"
+  # Validation lightsail cidr
+  if [ "${LIGHTSAIL_CIDR}" == "" ]; then
+    LIGHTSAIL_CIDR="0.0.0.0/0"
   fi
 
 
-  # Setting immutable values - if deployments.yaml is overwritten by volume this simply doesn't take any effect. (it's a feature not a bug)
-  sed -i -E "s|@@NAME@@|${IMMUTABLE_NAME}|g" /var/www/app/config/deployments.yaml
-  sed -i -E "s|@@REFER@@|${IMMUTABLE_REFER}|g" /var/www/app/config/deployments.yaml
-  sed -i -E "s|@@TYPE@@|${IMMUTABLE_TYPE}|g" /var/www/app/config/deployments.yaml
-  sed -i -E "s|@@BUNDLE@@|${IMMUTABLE_BUNDLE}|g" /var/www/app/config/deployments.yaml
-  sed -i -E "s|@@ZONE@@|${IMMUTABLE_ZONE}|g" /var/www/app/config/deployments.yaml
+  # Setting lightsail values - if security.yaml is overwritten by volume this simply doesn't take any effect. (it's a feature not a bug)
+  sed -i -E "s|@@NAME@@|${LIGHTSAIL_NAME}|g" /var/www/app/config/security.yaml
+  sed -i -E "s|@@PORT@@|${LIGHTSAIL_PORT}|g" /var/www/app/config/security.yaml
+  sed -i -E "s|@@PROTOCOL@@|${LIGHTSAIL_PROTOCOL}|g" /var/www/app/config/security.yaml
+  sed -i -E "s|@@CIDR@@|${LIGHTSAIL_CIDR}|g" /var/www/app/config/security.yaml
 else
   # Cleanup config directory
   rm -Rf /var/www/app/config
@@ -57,5 +51,5 @@ else
   cp ${IAC_INFRA_NAME}/config/* ../config
 fi
 
-# Run deploy immutables
+# Run lightsail instance public ports
 python /var/www/app/app/main.py

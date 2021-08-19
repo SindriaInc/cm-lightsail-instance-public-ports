@@ -14,7 +14,7 @@ List of required envs. This envs will be set on your pipeline variables or in yo
 | AWS_ACCESS_KEY_ID         | <access-key>                  |
 | AWS_SECRET_ACCESS_KEY     | <secret-key>                  |
 | AWS_DEFAULT_REGION        | eu-central-1                  |
-| IAC_MODE                  | <mode>                        |
+| IAC_MODE                  | standalone                    |
 | IAC_GIT_USERNAME          | <service-account-username>    |
 | IAC_GIT_PASSWORD          | <service-account-username>    |
 | IAC_GIT_PROVIDER          | <provider-fqdn>               |
@@ -22,11 +22,10 @@ List of required envs. This envs will be set on your pipeline variables or in yo
 | IAC_INFRA_NAME            | <repo-slug>                   |
 | IAC_LIVE_CACHE            | <bucket-name>                 |
 | IAC_CURRENT_INFRA         | <bucket-name>                 |
-| IMMUTABLE_NAME            | <resource-name>               |
-| IMMUTABLE_REFER           | <blueprint-name>              |
-| IMMUTABLE_TYPE            | <resource-type>               |
-| IMMUTABLE_BUNDLE          | <resource-bundle>             |
-| IMMUTABLE_ZONE            | <cloud-provider-zone>         |
+| LIGHTSAIL_NAME            | docker-node-01                |
+| LIGHTSAIL_PORT            | 8080                          |
+| LIGHTSAIL_PROTOCOL        | TCP                           |
+| LIGHTSAIL_CIDR            | 0.0.0.0/0                     |
 
 
 ## Usage
@@ -43,7 +42,7 @@ IMPORTANT: `Remeber to set all envs in your .env file before run.`
 
 ### Tips and Tricks
 
-For standalone usage you can override deployments.yaml configuration with volume. Append this to command above:
+For standalone usage you can override security.yaml configuration with volume. Append this to command above:
 
 `-v ./config:/var/www/app/config`
 
