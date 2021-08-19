@@ -1,6 +1,5 @@
 import subprocess
 import json
-import sys
 
 import helpers
 
@@ -31,19 +30,3 @@ def check_rule_cidrs(rule):
         else:
             return True
     return False
-
-
-# # Find specific rule by port - return boolean
-# def find_rule(name, rule):
-#     current_rules = get_rules(name)
-#     i = 0
-#     for k, entry in current_rules.items():
-#
-#         #print(entry[i])
-#         #print(rule)
-#
-#         if (entry[i]['fromPort'] == rule['port_info']['fromPort']):
-#             return True
-#
-#         i=+1
-#         continue
