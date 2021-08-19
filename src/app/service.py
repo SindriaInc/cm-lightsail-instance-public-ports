@@ -24,17 +24,17 @@ def create_rule_with_cidrs(name, rule):
 def delete_rule(name, rule):
     subprocess.call(['aws', 'lightsail', 'close-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+rule['fromPort']+',protocol='+rule['protocol']+',toPort='+rule['toPort']+''])
 
-# Find specific rule by port - return boolean
-def find_rule(name, rule):
-    current_rules = get_rules(name)
-    i = 0
-    for k, entry in current_rules.items():
-
-        #print(entry[i])
-        #print(rule)
-
-        if (entry[i]['fromPort'] == rule['port_info']['fromPort']):
-            return True
-
-        i=+1
-        continue
+# # Find specific rule by port - return boolean
+# def find_rule(name, rule):
+#     current_rules = get_rules(name)
+#     i = 0
+#     for k, entry in current_rules.items():
+#
+#         #print(entry[i])
+#         #print(rule)
+#
+#         if (entry[i]['fromPort'] == rule['port_info']['fromPort']):
+#             return True
+#
+#         i=+1
+#         continue
