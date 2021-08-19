@@ -34,6 +34,9 @@ def process_rules(name, rules):
 
                 print("found, deleting...")
                 service.delete_rule(name, rule)
+
+                # TODO: implement cidrs check
+
                 service.create_rule(name, rule)
             else:
                 print("not found, skipping...")
@@ -41,6 +44,9 @@ def process_rules(name, rules):
             j += 1
 
         i += 1
+
+        # TODO: implement cidrs check
+
         service.create_rule(name, rule)
 
 
