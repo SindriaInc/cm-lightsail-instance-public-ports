@@ -30,6 +30,8 @@ def process_rules(name, rules):
 
             if (rule['port_info']['fromPort'] == entry['fromPort']):
 
+                # TODO: implement idempotence check - skip delete if existing rule is identically
+
                 print("found, deleting...")
                 service.delete_rule(name, rule)
                 service.create_rule(name, rule)
