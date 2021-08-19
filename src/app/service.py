@@ -18,11 +18,12 @@ def create_rule_with_cidrs(name, rule):
     # TODO: implement process cidrs
 
     cidrs = "23.65.80.239/32,3.63.182.178/32"
-    subprocess.call(['aws', 'lightsail', 'open-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+rule['port_info']['fromPort']+',protocol='+rule['port_info']['protocol']+',toPort='+rule['port_info']['toPort']+',cidrs='+cidrs+''])
+    subprocess.call(['aws', 'lightsail', 'open-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+str(rule['port_info']['fromPort'])+',protocol='+str(rule['port_info']['protocol'])+',toPort='+str(rule['port_info']['toPort'])+',cidrs='+cidrs+''])
 
 # Delete existing rule - return void
 def delete_rule(name, rule):
     subprocess.call(['aws', 'lightsail', 'close-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+str(rule['port_info']['fromPort'])+',protocol='+str(rule['port_info']['protocol'])+',toPort='+str(rule['port_info']['toPort'])+''])
+
 
 # # Find specific rule by port - return boolean
 # def find_rule(name, rule):
