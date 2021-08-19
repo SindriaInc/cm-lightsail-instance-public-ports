@@ -36,8 +36,10 @@ def process_rules(name, rules):
                 service.delete_rule(name, rule)
 
                 # TODO: implement cidrs check
-
-                service.create_rule(name, rule)
+                if (service.check_rule_cidrs(rule)):
+                    service.create_rule_with_cidrs(name, rule)
+                else:
+                    service.create_rule(name, rule)
             else:
                 print("not found, skipping...")
 
@@ -46,8 +48,10 @@ def process_rules(name, rules):
         i += 1
 
         # TODO: implement cidrs check
-
-        service.create_rule(name, rule)
+        if (service.check_rule_cidrs(rule)):
+            service.create_rule_with_cidrs(name, rule)
+        else:
+            service.create_rule(name, rule)
 
 
 

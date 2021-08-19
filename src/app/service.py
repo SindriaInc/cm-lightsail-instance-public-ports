@@ -1,5 +1,7 @@
 import subprocess
 import json
+import sys
+
 import helpers
 
 # Get all rules of instance - return dict
@@ -15,6 +17,7 @@ def create_rule(name, rule):
 # Create a rule with restricted cidrs - return void
 def create_rule_with_cidrs(name, rule):
     cidrs = helpers.build_cidrs(rule['port_info']['cidrs'])
+    sys.exit(0)
     #cidrs = "23.65.80.239/32,3.63.182.178/32"
     subprocess.call(['aws', 'lightsail', 'open-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+str(rule['port_info']['fromPort'])+',protocol='+str(rule['port_info']['protocol'])+',toPort='+str(rule['port_info']['toPort'])+',cidrs='+cidrs+''])
 
@@ -24,7 +27,12 @@ def delete_rule(name, rule):
 
 # Check if rule contain restricted cidrs - return boolean
 def check_rule_cidrs(rule):
-    pass
+    if ('cidrs' in rule['port_info']):
+        if (not rule['port_info']['cidrs']):
+            return False
+        else:
+            return True
+    return False
 
 
 # # Find specific rule by port - return boolean
