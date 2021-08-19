@@ -22,6 +22,10 @@ def create_rule_with_cidrs(name, rule):
 def delete_rule(name, rule):
     subprocess.call(['aws', 'lightsail', 'close-instance-public-ports', '--instance-name', name, '--port-info', 'fromPort='+str(rule['port_info']['fromPort'])+',protocol='+str(rule['port_info']['protocol'])+',toPort='+str(rule['port_info']['toPort'])+''])
 
+# Check if rule contain restricted cidrs - return boolean
+def check_rule_cidrs():
+    pass
+
 
 # # Find specific rule by port - return boolean
 # def find_rule(name, rule):
