@@ -36,5 +36,8 @@ def save(file, data):
   return True
 
 # Generate cidrs for rule create - return string
-def process_cidrs():
-    pass
+def build_cidrs(cidrs):
+
+    # TODO: implement build cidrs
+
+    print(cidrs)
