@@ -25,26 +25,11 @@ def process_rules(name, rules):
 
     i = 0
 
-    #print(current_rules)
-
     for rule in rules:
-
-        #print(i)
-
-        #print(rules)
-        #print("\n\n")
 
         j = 0
 
         for entry in current_rules['portStates']:
-
-            #print("debug entry:")
-
-            #print(rules[0]['port_info'])
-
-            #print(k)
-
-            #print(current_rules['portStates'][0])
 
             print("check:")
             print(rule)
@@ -57,26 +42,16 @@ def process_rules(name, rules):
             print(j)
             print("\n")
 
-            #i += 1
-            #print(i)
-
-            #sys.exit(0)
-            #print("\n\n")
-
             if (entry['fromPort'] == rule['port_info']['fromPort']):
 
-                #return True
-
-                #service.delete_rule(name, rule)
-                #service.create_rule(name, rule)
-
                 print("found, deleting...")
+                # service.delete_rule(name, rule)
+                # service.create_rule(name, rule)
                 print("\n")
-                #print(rule)
             else:
                 print("\n")
                 print("not found, skipping...")
-                print(rule)
+                #print(rule)
                 print("\n")
 
                 # service.create_rule(name, rule)
@@ -84,11 +59,6 @@ def process_rules(name, rules):
 
 
             j += 1
-
-            #print("\n\n")
-            #print(i)
-
-
 
 
 
